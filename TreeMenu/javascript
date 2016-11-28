@@ -1,0 +1,29 @@
+$(function () {
+    TreeMenu("demo1_menu");
+})
+
+function TreeMenu(object) {
+    object = "#" + object;
+    $(object + ">ul>li>ul").hide();
+
+    $(object + ">ul>li").on("click", function () {
+        //點擊的目錄編號
+        var index = $(object + ">ul>li").index(this) - 1;
+        //被點擊的物件
+        var fn = $(object + ">ul>li>ul:eq(" + index + ")")
+        
+        //點擊的是不同的物件
+        if ($(object + ">ul>li").index($(".show"))-1 != index)
+        {
+            $(".show").children("ul").hide("slow");//隱藏原本物件
+            $(".show").removeClass("show");//刪除show class
+        }
+        
+        //父元素+class
+        var fd = fn.parent().addClass("show");
+        //顯示show的字元素
+        fd.children().show("slow");
+    });
+    
+    $("ul").css({ "list-style": "none", padding: "0px", margin : "0px"});
+}
