@@ -1,0 +1,20 @@
+test.aspx:
+<asp:Repeater id="rep" runat="server" >
+    <ItemTemplate>
+      <div>
+        <label>hello1</label>
+        <asp:TextBox ID="test1" Text="0" runat="server" ></asp:TextBox>
+      </div>
+
+      <div>
+        <label>hello2</label>
+          <asp:TextBox ID="test2" Text="1" runat="server" ></asp:TextBox>
+      </div>
+    </ItemTemplate>
+</asp:Repeater>
+
+test.aspx.cs:
+  foreach(TextBox item in rep.Items[0].Controls.OfType<TextBox>())
+  {
+    //取得你要的TextBox參數
+  }
